@@ -1,0 +1,75 @@
+import React from 'react';
+
+interface SidebarNavProps {
+  currentPage?: 'home' | 'about' | 'donate';
+}
+
+const SidebarNav: React.FC<SidebarNavProps> = ({ currentPage = 'home' }) => {
+  return (
+    <nav className="fixed left-0 top-0 h-full w-64 bg-emerald-900 z-50">
+      {/* Logo Section */}
+      <div className="p-8 border-b border-emerald-800">
+        <div className="text-2xl font-serif text-stone-100 mb-2">
+          The MAT Association
+        </div>
+        <div className="text-emerald-200 text-sm italic">
+          Mentorship • Access • Training
+        </div>
+      </div>
+
+      {/* Navigation Links */}
+      <div className="p-8">
+        <ul className="space-y-6">
+          <li>
+            <a 
+              href="/" 
+              className={`block transition-colors duration-200 ${
+                currentPage === 'home'
+                  ? 'text-stone-100 font-medium border-b-2 border-yellow-600 pb-1'
+                  : 'text-emerald-200 hover:text-yellow-400'
+              }`}
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/about" 
+              className={`block transition-colors duration-200 ${
+                currentPage === 'about'
+                  ? 'text-stone-100 font-medium border-b-2 border-yellow-600 pb-1'
+                  : 'text-emerald-200 hover:text-yellow-400'
+              }`}
+            >
+              About Us
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/donate" 
+              className={`block transition-colors duration-200 ${
+                currentPage === 'donate'
+                  ? 'text-stone-100 font-medium border-b-2 border-yellow-600 pb-1'
+                  : 'text-emerald-200 hover:text-yellow-400'
+              }`}
+            >
+              Donate
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Bottom CTA in Sidebar */}
+      <div className="absolute bottom-8 left-8 right-8">
+        <a 
+          href="/donate"
+          className="block bg-yellow-600 text-emerald-900 text-center px-4 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors text-sm"
+        >
+          {currentPage === 'donate' ? 'Make a Difference Today' : 'Support Our Cause'}
+        </a>
+      </div>
+    </nav>
+  );
+};
+
+export default SidebarNav;
